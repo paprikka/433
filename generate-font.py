@@ -1,5 +1,21 @@
 import fontforge
 import os
+import argparse
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Generate masked fonts where all characters appear as dots')
+    parser.add_argument('--css-output', 
+                       default='dist/css/masked.css',
+                       help='Output path for CSS file (default: dist/css/masked.css)')
+    parser.add_argument('--font-output', 
+                       default='dist/fonts/masked.woff2',
+                       help='Output path for font file (default: dist/fonts/masked.woff2)')
+    parser.add_argument('--css-font-src', 
+                       default='../fonts/masked.woff2',
+                       help='Font source URL to use in CSS @font-face (default: ../fonts/masked.woff2)')
+    return parser.parse_args()
+
+args = parse_arguments()
 
 # Create a completely new font from scratch
 font = fontforge.font()
@@ -226,30 +242,33 @@ for start, end in unicode_ranges:
 
 print(f"Created {total_glyphs} dot glyphs across Unicode ranges")
 
-# Create fonts directory if it doesn't exist
-fonts_dir = "../src/assets/fonts"
-os.makedirs(fonts_dir, exist_ok=True)
+# Create output directories if they don't exist
+font_dir = os.path.dirname(args.font_output)
+css_dir = os.path.dirname(args.css_output)
 
-# Generate WOFF2 font only
-woff2_path = os.path.join(fonts_dir, "masked.woff2")
+if font_dir:
+    os.makedirs(font_dir, exist_ok=True)
+if css_dir:
+    os.makedirs(css_dir, exist_ok=True)
 
-font.generate(woff2_path)
-print("Generated masked.woff2")
+# Generate WOFF2 font
+font.generate(args.font_output)
+print(f"Generated {args.font_output}")
 
 # Generate CSS with @font-face declaration
-css_content = """@font-face {
+css_content = f"""@font-face {{
   font-family: 'Masked';
-  src: url('./assets/fonts/masked.woff2') format('woff2');
+  src: url('{args.css_font_src}') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+}}
 """
 
-with open("../src/masked-font.css", "w") as f:
+with open(args.css_output, "w") as f:
     f.write(css_content)
 
-print("Generated masked-font.css")
+print(f"Generated {args.css_output}")
 
 font.close()
 print("Font generation complete!")

@@ -29,9 +29,15 @@ Download from [FontForge website](https://fontforge.org/en-US/downloads/)
 ## Running the command
 
 ```bash
+# With default options
 python3 generate-font.py
+
+# With custom options
+python3 generate-font.py --css-output dist/filename.css --font-output=otherfolder/font.woff2 --css-font-src=../otherfolder/font.woff2
 ```
 
-The script will:
-- Generate `../src/assets/fonts/masked.woff2`
-- Generate `../src/masked-font.css` with @font-face declaration
+### Options
+
+- `--css-output` - CSS file output path (default: `dist/css/masked.css`)
+- `--font-output` - Font file output path (default: `dist/fonts/masked.woff2`) 
+- `--css-font-src` - Font URL to use in CSS @font-face src (default: `../fonts/masked.woff2`)
