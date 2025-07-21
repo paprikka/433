@@ -30,6 +30,10 @@ font.em = 1000
 font.ascent = 800
 font.descent = 200
 
+# Add basic metadata
+font.copyright = "Copyright (c) 2025 Rafal Pastuszak <hello@sonnet.io>"
+font.appendSFNTName("English (US)", "Designer", "Rafal Pastuszak")
+font.appendSFNTName("English (US)", "License", "MIT License")
 print("Created new font from scratch")
 
 # Create dot glyph template
