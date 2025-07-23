@@ -1,6 +1,10 @@
-# Masked Font Generator
+# 433
 
-Generate masked fonts where all characters appear as dots, preserving text structure while hiding content.
+433 is a font that masks the visible text and replaces it with dots. I'm using it with the Coffeeshop Mode in [Ensō](https://enso.sonnet.io).
+
+Read more about it [here](https://untested.sonnet.io/notes/433-how-to-make-a-font-that-says-nothing/)
+
+![dots](./docs/dots.webp)
 
 ## Requirements
 
@@ -9,22 +13,7 @@ Generate masked fonts where all characters appear as dots, preserving text struc
 
 ## Setting up FontForge
 
-**macOS:**
-```bash
-# Install FontForge with Python support
-brew install fontforge
-
-# Add FontForge Python module to your environment
-export PYTHONPATH="/opt/homebrew/lib/python3.12/site-packages:$PYTHONPATH"
-```
-
-**Ubuntu/Debian:**
-```bash
-sudo apt install fontforge python3-fontforge
-```
-
-**Windows:**
-Download from [FontForge website](https://fontforge.org/en-US/downloads/)
+Visit [the official FontForge site](https://fontforge.org/en-US/downloads/).
 
 ## Running the command
 
@@ -38,6 +27,6 @@ python3 generate-font.py --css-output dist/filename.css --font-output=otherfolde
 
 ### Options
 
-- `--css-output` - CSS file output path (default: `dist/css/masked.css`)
-- `--font-output` - Font file output path (default: `dist/fonts/masked.woff2`) 
-- `--css-font-src` - Font URL to use in CSS @font-face src (default: `../fonts/masked.woff2`)
+- `--css-output` - CSS file output path (default: `dist/css/433.css`)
+- `--font-output` - Font file output path (default: `dist/fonts/433.woff2`) 
+- `--css-font-src` - Font URL to use in CSS @font-face src (default: `/fonts/433.woff2`)
