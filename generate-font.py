@@ -88,7 +88,7 @@ print(f"Created {len(whitespace_chars)} whitespace glyphs")
 # Create dot glyphs for all valid codepoints using FontForge's encoding
 total_glyphs = 0
 # Use Basic Multilingual Plane (0x0000-0xFFFF) which covers most common characters
-for codepoint in range(0x21, 0x10000):  # Start from 0x21 to skip control chars
+for codepoint in range(0x21, 0xFFFE):  # Start from 0x21 to skip control chars, end before 0xFFFF
     # Skip if it's a whitespace character
     if codepoint in whitespace_chars:
         continue
