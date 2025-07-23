@@ -3,25 +3,25 @@ import os
 import argparse
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Generate masked fonts where all characters appear as dots')
+    parser = argparse.ArgumentParser(description='Generate a masked font where all characters appear as dots')
     parser.add_argument('--css-output', 
-                       default='dist/css/masked.css',
-                       help='Output path for CSS file (default: dist/css/masked.css)')
+                       default='dist/css/433.css',
+                       help='Output path for CSS file (default: dist/css/433.css)')
     parser.add_argument('--font-output', 
-                       default='dist/fonts/masked.woff2',
-                       help='Output path for font file (default: dist/fonts/masked.woff2)')
+                       default='dist/fonts/433.woff2',
+                       help='Output path for font file (default: dist/fonts/433.woff2)')
     parser.add_argument('--css-font-src', 
-                       default='../fonts/masked.woff2',
-                       help='Font source URL to use in CSS @font-face (default: ../fonts/masked.woff2)')
+                       default='/fonts/433.woff2',
+                       help='Font source URL to use in CSS @font-face (default: /fonts/433.woff2)')
     return parser.parse_args()
 
 args = parse_arguments()
 
 # Create a completely new font from scratch
 font = fontforge.font()
-font.fontname = "Masked"
-font.familyname = "Masked"
-font.fullname = "Masked Regular"
+font.fontname = "433"
+font.familyname = "433"
+font.fullname = "433 Regular"
 font.weight = "Regular"
 font.encoding = "UnicodeFull"
 
@@ -34,7 +34,6 @@ font.descent = 200
 font.copyright = "Copyright (c) 2025 Rafal Pastuszak <hello@sonnet.io>"
 font.appendSFNTName("English (US)", "Designer", "Rafal Pastuszak")
 font.appendSFNTName("English (US)", "License", "MIT License")
-print("Created new font from scratch")
 
 # Create dot glyph template
 dot_width = 600
@@ -126,7 +125,7 @@ print(f"Generated {args.font_output}")
 
 # Generate CSS with @font-face declaration
 css_content = f"""@font-face {{
-  font-family: 'Masked';
+  font-family: '433';
   src: url('{args.css_font_src}') format('woff2');
   font-weight: normal;
   font-style: normal;
