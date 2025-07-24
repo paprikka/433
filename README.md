@@ -1,9 +1,6 @@
 # 433
 
-433 is a font that masks the visible text and replaces it with dots. I'm using it with the Coffeeshop Mode in [Ensō](https://enso.sonnet.io).
-
-> [!TIP]
-> ### Read more about it [here](https://untested.sonnet.io/notes/433-how-to-make-a-font-that-says-nothing/)
+[433 is a font that masks the visible text and replaces it with dots](https://untested.sonnet.io/notes/433-how-to-make-a-font-that-says-nothing/). I'm using it with the Coffeeshop Mode in [Ensō](https://enso.sonnet.io).
 
 ![dots](./docs/dots.webp)
 
